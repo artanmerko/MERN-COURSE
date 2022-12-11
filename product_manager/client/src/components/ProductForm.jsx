@@ -19,13 +19,12 @@ const ProductForm = (props) => {
       .then(res => {
         console.log(res)
         console.log(res.data)
-        setProducts([...products, res.data])
+        setProducts([...products, res.data]);
+        setTittle('');
+        setPrice('');
+        setDescription('');
       })
       .catch(err => console.log(err))
-
-    setTittle('')
-    setPrice('')
-    setDescription('')
   }
 
   return (

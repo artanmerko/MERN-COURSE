@@ -1,10 +1,19 @@
 import axios from 'axios';
 import React,{useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import './ProductList.css'
 
 const ProductList = (props) => {
 
-  const {products, setProducts} = props;
+  const {removeFromDom, products, setProducts} = props;
+
+  const deleteProduct = (productId) =>{
+    axios.delete('http://localhost:8000/api/products/' + productId)
+      .then( res => {
+        removeFromDom(productId)
+      })
+      .catch(err=>console.log(err))
+  }
 
   useEffect(()=>{
     axios.get('http://localhost:8000/api/products')
@@ -14,13 +23,24 @@ const ProductList = (props) => {
       })
       .catch(err=>console.log(err))
   },[])
+
   return (
     <div>
       {
         products.map((product, index)=>{
           return (
-            <div key={index}>
-              <Link to={`/products/${product._id}`}><h3>{product.tittle}</h3></Link>
+            <div key={index} className='list'>
+
+              <Link to={`/products/${product._id}`}>
+                <h4 className='title'>{product.tittle}</h4>
+              </Link>
+              <Link to={`/products/edit/${product._id}`}>
+                <h4>Edit</h4>
+              </Link>
+              <button className='btn' onClick={(e)=>{deleteProduct(product._id)}}>
+                Delete
+              </button>
+
             </div>
           )
         })
