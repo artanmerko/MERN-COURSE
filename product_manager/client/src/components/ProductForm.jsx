@@ -3,14 +3,18 @@ import '../css/ProductForm.css';
 
 const ProductForm = (props) => {
 
-  const {initialTittle,initialPrice, initialDescription,onSubmitProp} = props;
-  const [tittle, setTittle] = useState(initialTittle)
-  const [description, setDescription] = useState(initialDescription)
-  const [price, setPrice] = useState(initialPrice)
+  const {initialTittle, initialPrice, initialDescription, onSubmitProp} = props;
+
+  const [tittle, setTittle] = useState(initialTittle);
+  const [price, setPrice] = useState(initialPrice);
+  const [description, setDescription] = useState(initialDescription);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    onSubmitProp({tittle, price, description})
+    onSubmitProp({tittle, price, description});
+    setTittle("")
+    setPrice("")
+    setDescription("")
   }
 
   return (

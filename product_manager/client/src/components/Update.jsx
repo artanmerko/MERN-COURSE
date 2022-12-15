@@ -1,9 +1,7 @@
 import React, { useEffect, useState  } from 'react'
-import {useParams} from 'react-router-dom'
 import axios from 'axios'
 import ProductForm from './ProductForm';
 import { useNavigate } from "react-router-dom";
-import DeleteButton from './DeleteButton';
 
 const Update = (props) => {
 
@@ -23,9 +21,9 @@ const Update = (props) => {
     }, [id])
 
   const updateProduct = (product) => {
-    axios.put('http://localhost:8000/api/products/' + id, product)
+    axios.put(`http://localhost:8000/products/${id}/edit`, product)
       .then( res => console.log(res))
-      .catch(err => console.log(err))
+      .then(() => navigate(`/products/`));
   }
 
   return (
@@ -38,10 +36,6 @@ const Update = (props) => {
             initalTittle = {product.tittle}
             initalPrice= {product.price}
             initalDescription = {product.description}
-          />
-          <DeleteButton
-          personId={product._id}
-          successCallback={() => navigate("/")}
           />
         </>
       )}

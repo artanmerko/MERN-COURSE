@@ -13,8 +13,8 @@ const ProductList = (props) => {
       .then((res)=>{
         setProducts(res.data)
       })
-      .catch(err=>console.log(err))
-  },[])
+      
+    },[])
 
   const removeFromDom = (productId) => {
     setProducts(products.filter(product=>product._id !== productId))

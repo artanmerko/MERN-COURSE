@@ -3,7 +3,7 @@ import ProductForm from '../components/ProductForm'
 import ProductList from '../components/ProductList'
 import axios from 'axios'
 
-const Main = (props) => {
+const Main = () => {
 
   const [products, setProducts] = useState([])
   const [loaded, setLoaded] = useState(false);
@@ -14,33 +14,31 @@ const Main = (props) => {
         setProducts(res.data)
         setLoaded(true)
       })
-      .catch(err=>console.log(err))
-  },[])
+  },[products])
 
   const removeFromDom = (productId) => {
-    axios.delete('http://localhost:8000/api/products/' + productId)
-    .then(res => {
-      console.log(res)
-      console.log(res.data)
-    setProducts(products.filter(product=>product._id !== productId))
-    })
-    .catch((err)=>console.log(err))
+    setProducts(products.filter(product => product._id !== productId))
   }
 
-  const createProduct = (productParam) => {
-    axios.post('http://localhost:8000/api/products/new', productParam)
+  const createProduct = (product) => {
+    axios.post('http://localhost:8000/api/products/new', product)
       .then(res => {
-        console.log(res)
         console.log(res.data)
-        setProducts([...products, res.data]);
+        setProducts(product => [...products, res.data]);
       })
-      .catch(err => console.log(err))
     }
   return (
     <div>
-      <ProductForm onSubmitProp={createProduct} InitialTittle='' initialPrice='' initialDescription='' />
+      <ProductForm
+        onSubmitProp={createProduct}
+        initialTittle=''
+        initialPrice=''
+        initialDescription=''
+      />
       <hr/>
-      {loaded && <ProductList products={products} setProducts={setProducts} removeFromDom={removeFromDom}/>}
+      { loaded && (
+      <ProductList products={products} removeFromDom={removeFromDom}/>
+    )}
     </div>
   )
 }
