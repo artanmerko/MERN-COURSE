@@ -1,44 +1,76 @@
 import React, { useEffect, useState  } from 'react'
+import {useParams, useNavigate} from 'react-router-dom'
 import axios from 'axios'
-import ProductForm from './ProductForm';
-import { useNavigate } from "react-router-dom";
 
 const Update = (props) => {
 
+  const {id} = useParams();
   const navigate = useNavigate();
-  const {id} = props;
-  const [product, setProduct] = useState({});
-  const [loaded, setLoaded] = useState(false);
+  const [tittle, setTittle] = useState();
+  const [price, setPrice] = useState();
+  const [description, setDescription] = useState();
 
   useEffect(()=>{
     axios.get('http://localhost:8000/api/products/' + id)
       .then(res => {
-        setProduct(res.data)
-        setLoaded(true);
+        setTittle(res.data.tittle);
+        setPrice(res.data.price);
+        setDescription(res.data.description);
       }
       )
       .catch(err => console.log(err))
     }, [id])
 
-  const updateProduct = (product) => {
-    axios.put(`http://localhost:8000/products/${id}/edit`, product)
-      .then( res => console.log(res))
-      .then(() => navigate(`/products/`));
+  const updateProduct = (e) => {
+    e.preventDefault();
+
+    axios.put('http://localhost:8000/api/products/' + id, {
+      tittle,
+      price,
+      description
+    })
+      .then( res => {
+        console.log(res);
+        navigate('/')
+      })
+      .catch(err => console.log(err))
+
   }
 
   return (
     <div className='app'>
       <h3>Update a Product</h3>
-      { loaded  && (
-        <>
-          <ProductForm
-            onSubmitProp = {updateProduct}
-            initalTittle = {product.tittle}
-            initalPrice= {product.price}
-            initalDescription = {product.description}
-          />
-        </>
-      )}
+      <form onSubmit={updateProduct}>
+        <div className='form-style'>
+          <label>Tittle</label>
+          <input
+          type='text'
+          value={tittle}
+          onChange = {(e)=>setTittle(e.target.value)}
+          ></input>
+        </div>
+        <br/>
+        <div className='form-style'>
+          <label>Price</label>
+          <input
+          type='number'
+          value={price}
+          onChange = {(e)=>setPrice(e.target.value)}
+          ></input>
+        </div>
+        <br/>
+        <div className='form-style'>
+          <label>Description</label>
+          <input
+          type='text'
+          value={description}
+          onChange = {(e)=>setDescription(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <input type="submit" value='Update'/>
+        </div>
+      </form>
     </div>
   )
 }
