@@ -1,0 +1,33 @@
+form {
+  display: flex;
+  justify-content: space-around;
+  gap: 60px;
+  background-color: lightgray;
+  padding: 30px;
+  text-align: left;
+  margin: 20px;
+}
+.left{
+  display: inline-block;
+}
+.submit{
+  margin-top: 30px;
+}
+input[type='submit'] {
+  width: 170px;
+  cursor: pointer;
+  background-color: green;
+}
+.create-btn, .home-btn{
+  text-decoration: none;
+  padding: 5px;
+  background-color: lightblue;
+  box-shadow: 5px 5px black;
+}
+.link-home{
+  text-align: right;
+  margin: 20px;
+}
+a:visited{
+  color: black;
+}
