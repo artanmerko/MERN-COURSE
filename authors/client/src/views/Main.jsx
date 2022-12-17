@@ -44,7 +44,7 @@ const Main = () => {
 
                   <td>
                     <div className="d-inline-block">
-                      <Link to={`/edit/${author._id}`} key={index} className="btn btn-success">
+                      <Link to={`/author/edit/${author._id}`} key={index} className="btn btn-success">
                         Edit
                       </Link>
                     </div>

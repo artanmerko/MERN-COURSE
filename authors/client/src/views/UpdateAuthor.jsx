@@ -6,14 +6,16 @@ import AuthorForm from '../components/AuthorForm';
 const UpdateAuthor = (props) => {
 
   const {id} = useParams();
-  const [author, setAuthor] = useState({ authorName:'' });
+  const [author, setAuthor] = useState([ ]);
   const [loaded, setLoaded] = useState(false);
   const navigate = useNavigate()
 
   useEffect(()=>{
     axios.get(`http://localhost:8000/api/author/${id}`)
       .then((res)=>{
-        setAuthor({authorName: res.data.results.authorName});
+        console.log(res.data);
+        setAuthor(res.data);
+        console.log(res.data);
         setLoaded(true);
       })
       .catch(err=>console.log(err))

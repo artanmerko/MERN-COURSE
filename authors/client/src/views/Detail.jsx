@@ -22,7 +22,7 @@ const Detail = (props) => {
     <div className="container mt-5 text-center">
       <h4 className="display-3">{author.name}</h4>
       <div className="d-inline-flex mt-2">
-        <Link to={`/author/edit/${author.id}`} className="btn btn-primary">Update</Link>
+        <Link to={`/author/edit/${author._id}`} className="btn btn-primary">Update</Link>
         <DeleteButton authorId={author._id} successCallback={() => navigate('/')} />
       </div>
       <div className="display-8">
