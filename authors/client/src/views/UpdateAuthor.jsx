@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import AuthorForm from '../components/AuthorForm';
 
 const UpdateAuthor = (props) => {
 
   const {id} = useParams();
-  const [author, setAuthor] = useState({});
+  const [author, setAuthor] = useState({ authorName:'' });
   const [loaded, setLoaded] = useState(false);
   const navigate = useNavigate()
 
   useEffect(()=>{
     axios.get(`http://localhost:8000/api/author/${id}`)
       .then((res)=>{
-        setAuthor(res.data);
+        setAuthor({authorName: res.data.results.authorName});
         setLoaded(true);
       })
       .catch(err=>console.log(err))
   },[id])
 
-  const updateName = (author) => {
-    axios.put(`http://localhost:8000/api/author/${id}`, author)
+  const updateName = (name) => {
+    axios.put(`http://localhost:8000/api/author/${id}`, name)
       .then((res) => {
         navigate('/')
       })
@@ -35,10 +35,7 @@ const UpdateAuthor = (props) => {
       <h1>Favorite Authors</h1>
       <h5>Edit author:</h5>
       {loaded && (
-        <AuthorForm
-          onSubmitProp={updateName}
-          initialName={author.name}
-        />
+        <AuthorForm onSubmitProp = {updateName} initialName = {author.name}/>
       )}
     </div>
   )

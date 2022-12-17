@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import DeleteButton from '../components/DeleteButton';
@@ -42,7 +41,7 @@ const Main = () => {
                       {author.name}
                     </Link>
                   </td>
-                  
+
                   <td>
                     <div className="d-inline-block">
                       <Link to={`/edit/${author._id}`} key={index} className="btn btn-success">
