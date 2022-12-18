@@ -13,9 +13,16 @@ module.exports.getOnePoll = (req, res) => {
   }
 
 module.exports.createPoll = (req, res) => {
-  Poll.create(req.body)
+  const {question, optionOne, optionTwo, optionThree,optionFour} = req.body;
+  Poll.create({
+    question: question,
+    optionOne: optionOne,
+    optionTwo: optionTwo,
+    optionThree: optionThree,
+    optionFour: optionFour
+  })
     .then(createdPoll=>res.json(createdPoll))
-    .catch(err => res.json({message: 'Something went wrong', error: err }))
+    .catch(err => res.status(400).json({message: 'Something went wrong', error: err }))
   }
 
 module.exports.updatePoll = (req, res) => {

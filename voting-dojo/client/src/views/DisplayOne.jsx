@@ -17,35 +17,43 @@ const DisplayOne = () => {
         .catch(err => console.log(err))
   }, [id])
 
+  const pollOptions  = [
+    {
+        className: "one",
+        pollText: poll.optionOne,
+    },
+    {
+        className: "two",
+        pollText: poll.optionTwo,
+    },
+    {
+        className: "three",
+        pollText: poll.optionThree,
+    },
+    {
+        className: "four",
+        pollText: poll.optionFour,
+    }
+  ]
+
+  const count = () => {
+
+  }
 
   return (
     <div className='disp-one'>
       <h3>{poll.question}</h3>
       <div className='opt'>
-        <div className='option'>
-          <p>
-            {poll.optionOne}
-          </p>
-          <button className='btn one'>Vote {poll.optionOne}</button>
-        </div>
-        <div className='option'>
-          <p>
-            {poll.optionTwo}
-          </p>
-          <button className='btn two'>Vote {poll.optionTwo}</button>
-        </div>
-        <div className='option'>
-          <p>
-            {poll.optionThree}
-          </p>
-          <button className='btn three'>Vote {poll.optionThree}</button>
-        </div>
-        <div className='option'>
-          <p>
-            {poll.optionFour}
-          </p>
-          <button className='btn four'>Vote {poll.optionFour}</button>
-        </div>
+        {
+            pollOptions.map (poll =>
+                <div className='option'>
+                    <p>
+                    {poll.pollText}
+                    </p>
+                    <button onClick={count} className={`btn ${poll.className}`}>Vote {poll.pollText}</button>
+                </div>
+            )
+        }
       </div>
 
     </div>
