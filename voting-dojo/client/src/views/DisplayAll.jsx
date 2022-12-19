@@ -2,6 +2,7 @@ import './css/Display.css'
 import React, { useState, useEffect }  from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 const DisplayAll = () => {
 
@@ -28,10 +29,13 @@ const DisplayAll = () => {
             polls.map((poll, index)=>{
               return (
                 <div key={index}>
-                  <div>
+                  <div className='quest'>
                     <p>
                       <i className='fa'>&#xf200;</i>
-                      <Link to={`/polls/${poll._id}`}>{poll.question}</Link>
+                      <Link to={`/polls/${poll._id}`}>
+                        {poll.question}
+                        <p className='par'>{moment().add(1, 'days').calendar()}</p>
+                      </Link>
                     </p>
                   </div>
                 </div>
@@ -46,10 +50,12 @@ const DisplayAll = () => {
             polls.map((poll, index)=>{
               return (
                 <div key={index}>
-                  <div>
+                  <div className='quest'>
                     <p>
                       <i className='fa'>&#xf200;</i>
-                      <Link to={`/polls/${poll._id}`}>{poll.question}</Link>
+                      <Link to={`/polls/${poll._id}`}>
+                        {poll.question}
+                        <p className='par'>{moment().startOf('hour').fromNow()}</p>                      </Link>
                     </p>
                   </div>
                 </div>

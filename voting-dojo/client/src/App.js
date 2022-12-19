@@ -9,7 +9,7 @@ import Vote from './views/Vote';
 function App() {
   return (
     <div className="App">
-      <h3>Voting Dojo</h3>
+      <h1>Voting Dojo</h1>
       <BrowserRouter>
         <Routes>
           <Route element={<DisplayAll/>} path='/'/>

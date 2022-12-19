@@ -11,11 +11,19 @@
   text-align: left;
   background-color: lightgray;
   padding: 20px;
+  border: 2px solid black;
 }
 
 .fa{
   font-size:32px;
   margin-right: 5px;
+}
+
+.quest{
+  border: 2px solid black;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: whitesmoke;
 }
 
 .opt{
@@ -70,4 +78,7 @@
 .four{
   background-color: #e11d48;
   border: 2px solid #e11d48;
+}
+.par {
+  margin-left: 15px;
 }

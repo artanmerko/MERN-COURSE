@@ -3,9 +3,10 @@ form {
   justify-content: space-around;
   gap: 60px;
   background-color: lightgray;
-  padding: 30px;
+  object-fit: contain;
   text-align: left;
   margin: 20px;
+  padding: 30px 0px;
 }
 .left{
   display: inline-block;
@@ -17,7 +18,10 @@ input[type='submit'] {
   width: 170px;
   cursor: pointer;
   background-color: green;
+  border-radius: 2px;
+  padding: 7px 7px;
 }
+
 .create-btn, .home-btn{
   text-decoration: none;
   padding: 5px;
@@ -30,4 +34,9 @@ input[type='submit'] {
 }
 a:visited{
   color: black;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
