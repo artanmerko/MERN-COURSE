@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const PollForm = (props) => {
 
-  const {initialQuestion, initialOptionOne, initialOptionTwo, initialOptionThree, initialOptionFour, onSubmitProp} = props;
+  const {initialQuestion, initialOptionOne, initialOptionTwo, initialOptionThree, initialOptionFour,onSubmitProp} = props;
 
   const [question, setQuestion] = useState(initialQuestion);
   const [optionOne, setOptionOne] = useState(initialOptionOne);
