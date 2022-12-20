@@ -46,6 +46,7 @@ const CreatePoll = () => {
       initialOptionThree = ''
       initialOptionFour = ''
       />
+      
     </div>
   )
 }
