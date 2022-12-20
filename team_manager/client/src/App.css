@@ -1,0 +1,10 @@
+* {
+  text-align: center;
+  margin: 20px;
+}
+.App {
+  align-items: center;
+  position: relative;
+  top: 20%;
+  left: 20%;
+}

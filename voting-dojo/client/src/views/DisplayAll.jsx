@@ -34,7 +34,7 @@ const DisplayAll = () => {
                       <i className='fa'>&#xf200;</i>
                       <Link to={`/polls/${poll._id}`}>
                         {poll.question}
-                        <p className='par'>{moment().add(1, 'days').calendar()}</p>
+                        <p className='par'>{                                                       moment().add(1, 'days').calendar()}</p>
                       </Link>
                     </p>
                   </div>
