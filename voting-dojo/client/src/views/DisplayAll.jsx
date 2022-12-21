@@ -34,8 +34,8 @@ const DisplayAll = () => {
                       <i className='fa'>&#xf200;</i>
                       <Link to={`/polls/${poll._id}`}>
                         {poll.question}
-                        <p className='par'>{                                                       moment().add(1, 'days').calendar()}</p>
                       </Link>
+                      <span className='par'>{moment().add(1, 'days').calendar()}</span>
                     </p>
                   </div>
                 </div>
@@ -55,7 +55,8 @@ const DisplayAll = () => {
                       <i className='fa'>&#xf200;</i>
                       <Link to={`/polls/${poll._id}`}>
                         {poll.question}
-                        <p className='par'>{moment().startOf('hour').fromNow()}</p>                      </Link>
+                      </Link>
+                      <span className='par'>{moment().startOf('hour').fromNow()}</span>
                     </p>
                   </div>
                 </div>

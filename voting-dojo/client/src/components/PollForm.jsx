@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const PollForm = (props) => {
 
-  const {initialQuestion, initialOptionOne, initialOptionTwo, initialOptionThree, initialOptionFour,onSubmitProp} = props;
+  const {initialQuestion, initialOptionOne, initialOptionTwo, initialOptionThree, initialOptionFour,onSubmitProp,errors} = props;
 
   const [question, setQuestion] = useState(initialQuestion);
   const [optionOne, setOptionOne] = useState(initialOptionOne);
@@ -21,9 +21,17 @@ const PollForm = (props) => {
     })
   }
 
+
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
+        {
+          errors.map((error, index) => {
+            return (
+              <p key={index}>{error}</p>
+            )
+          })
+        }
         <div className='left'>
           <p>Your question:</p>
           <textarea
@@ -32,6 +40,10 @@ const PollForm = (props) => {
           value={question}
           onChange={(e)=>setQuestion(e.target.value)}>
           </textarea>
+          { errors.question ?
+            <p>{errors.question.message}</p>
+              : null
+          }
           <div className='submit'>
             <input type="submit" value='Submit Poll' />
           </div>
@@ -45,6 +57,10 @@ const PollForm = (props) => {
           value={optionOne}
           onChange={(e)=>setOptionOne(e.target.value)}
           />
+          { errors.optionOne ?
+            <p>{errors.optionOne.message}</p>
+              : null
+          }
           </div>
 
           <div>
@@ -54,6 +70,10 @@ const PollForm = (props) => {
           value={optionTwo}
           onChange={(e)=>setOptionTwo(e.target.value)}
           />
+          { errors.optionTwo ?
+            <p>{errors.optionTwo.message}</p>
+              : null
+          }
           </div>
 
           <div>

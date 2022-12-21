@@ -3,8 +3,8 @@ import React, { useState, useEffect }  from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const DisplayOne = () => {
 
+const DisplayOne = () => {
   const [poll, setPolls] = useState([]);
   const {id} = useParams();
 
@@ -25,32 +25,36 @@ const DisplayOne = () => {
     {
         className: "two",
         pollText: poll.optionTwo,
-    },
-    {
-        className: "three",
-        pollText: poll.optionThree,
-    },
-    {
-        className: "four",
-        pollText: poll.optionFour,
     }
   ]
 
-  const count = () => {
-
+  if(poll.optionThree !== ''){
+    pollOptions.push(
+     {  className: "three",
+        pollText: poll.optionThree,
+    }
+    )
   }
+  if(poll.optionFour !== ''){
+    pollOptions.push(
+     {  className: "four",
+        pollText: poll.optionFour,
+    }
+    )
+  }
+
 
   return (
     <div className='disp-one'>
       <h3>{poll.question}</h3>
       <div className='opt'>
         {
-            pollOptions.map (poll =>
-                <div className='option'>
+            pollOptions.map ((poll, index) =>
+                <div className='option' key={index}>
                     <p>
                     {poll.pollText}
                     </p>
-                    <button onClick={count} className={`btn ${poll.className}`}>Vote {poll.pollText}</button>
+                    <button className={`btn ${poll.className}`}>Vote {poll.pollText}</button>
                 </div>
             )
         }

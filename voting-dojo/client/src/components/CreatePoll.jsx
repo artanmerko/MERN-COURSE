@@ -7,6 +7,7 @@ import PollForm from './PollForm';
 
 const CreatePoll = () => {
 
+
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
 
@@ -28,16 +29,10 @@ const CreatePoll = () => {
 
   return (
     <div>
-      {
-        errors.map((error, index) => {
-          return (
-            <p key={index}>{error}</p>
-          )
-        })
-      }
       <div className='link-home'>
       <Link to={'/'} className='home-btn'>Back Home</Link>
       </div>
+      
       <PollForm
       onSubmitProp = {createPoll}
       initialQuestion = ''
@@ -45,8 +40,9 @@ const CreatePoll = () => {
       initialOptionTwo = ''
       initialOptionThree = ''
       initialOptionFour = ''
+      errors={errors}
       />
-      
+
     </div>
   )
 }
