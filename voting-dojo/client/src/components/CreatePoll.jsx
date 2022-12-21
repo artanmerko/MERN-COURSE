@@ -12,6 +12,7 @@ const CreatePoll = () => {
   const [errors, setErrors] = useState([]);
 
   const createPoll = (poll) => {
+
     axios.post('http://localhost:8000/polls/new',poll)
       .then((res) => {
         console.log(res);
@@ -32,7 +33,7 @@ const CreatePoll = () => {
       <div className='link-home'>
       <Link to={'/'} className='home-btn'>Back Home</Link>
       </div>
-      
+
       <PollForm
       onSubmitProp = {createPoll}
       initialQuestion = ''

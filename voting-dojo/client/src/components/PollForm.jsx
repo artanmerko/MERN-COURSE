@@ -37,6 +37,7 @@ const PollForm = (props) => {
           <textarea
           cols="20" rows="5"
           type='text'
+          placeholder='Enter your questions'
           value={question}
           onChange={(e)=>setQuestion(e.target.value)}>
           </textarea>
