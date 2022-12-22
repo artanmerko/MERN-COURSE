@@ -9,7 +9,7 @@ const PollForm = (props) => {
   const [optionTwo, setOptionTwo] = useState(initialOptionTwo);
   const [optionThree, setOptionThree] = useState(initialOptionThree);
   const [optionFour, setOptionFour] = useState(initialOptionFour);
-
+  
   const onSubmitHandler = (e) => {
     e.preventDefault();
     onSubmitProp({

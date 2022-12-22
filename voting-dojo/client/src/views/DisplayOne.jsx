@@ -43,7 +43,6 @@ const DisplayOne = () => {
     )
   }
 
-
   return (
     <div className='disp-one'>
       <h3>{poll.question}</h3>

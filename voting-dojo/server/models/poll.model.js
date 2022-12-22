@@ -45,9 +45,9 @@ const PollSchema = new mongoose.Schema ({
   question: {
     type: String,
     required: [
-      true,
-      'The question must be 10 characters or longer!'
+      true
     ],
+    maxLength:[10, 'The question must be 10 characters or longer!'],
     unique: true
   },
   options: [OptionSchema],
