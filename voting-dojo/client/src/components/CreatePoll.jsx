@@ -7,7 +7,6 @@ import PollForm from './PollForm';
 
 const CreatePoll = () => {
 
-
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
 
@@ -19,12 +18,8 @@ const CreatePoll = () => {
         navigate(`/`);
       })
       .catch(err => {
-        const errorResponse = err.response.data.errors;
-        const errorArr = [];
-        for (const key of Object.keys(errorResponse)) {
-            errorArr.push(errorResponse[key].message)
-        }
-        setErrors(errorArr);
+        console.log(err.response.data.error.message);
+        setErrors(err.response.data.error.message);
     })
   }
 

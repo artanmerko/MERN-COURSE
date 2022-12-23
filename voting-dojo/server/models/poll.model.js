@@ -2,20 +2,20 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
 
-const OptionSchema = new mongoose.Schema({
+const PollSchema = new mongoose.Schema ({
+  question: {
+    type: String,
+    required: [true , 'Question is required!'],
+    minLength:[10, 'The question must be 10 characters or longer!'],
+    unique: true
+  },
   optionOne: {
     type: String,
-    required: [
-      true,
-      'Option 1 is required!'
-    ]
+    required: [true,'Option 1 is required!']
   },
   optionTwo: {
     type: String,
-    required: [
-      true,
-      'Option 2 is required!'
-    ]
+    required: [true,'Option 2 is required!']
   },
   optionThree: {
     type: String
@@ -38,28 +38,12 @@ const OptionSchema = new mongoose.Schema({
   voteFour: {
     type: Number,
     default: 0
-  }
-})
-
-const PollSchema = new mongoose.Schema ({
-  question: {
-    type: String,
-    required: [
-      true
-    ],
-    maxLength:[10, 'The question must be 10 characters or longer!'],
-    unique: true
   },
-  options: [OptionSchema],
-  voted:[{
-    type: mongoose.Schema.Types.ObjectId
-  }],
   created: {
     type: Date,
     default: Date.now
 }
-}, {timestamps: true}
-)
+}, {timestamps: true})
 
 PollSchema.plugin(uniqueValidator);
 

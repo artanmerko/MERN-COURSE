@@ -9,7 +9,7 @@ const PollForm = (props) => {
   const [optionTwo, setOptionTwo] = useState(initialOptionTwo);
   const [optionThree, setOptionThree] = useState(initialOptionThree);
   const [optionFour, setOptionFour] = useState(initialOptionFour);
-  
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     onSubmitProp({
@@ -25,26 +25,20 @@ const PollForm = (props) => {
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
-        {
-          errors.map((error, index) => {
-            return (
-              <p key={index}>{error}</p>
-            )
-          })
-        }
+
         <div className='left'>
           <p>Your question:</p>
+          {/* {errors === 'unique' ? <span style={{color:'red'}}>*QUESTION IS NOT UNIQUE</span>: null}<br/> */}
+          { errors.question && <p>{errors.question.message}</p>
+          }
           <textarea
+          name='question'
           cols="20" rows="5"
           type='text'
           placeholder='Enter your questions'
           value={question}
           onChange={(e)=>setQuestion(e.target.value)}>
           </textarea>
-          { errors.question ?
-            <p>{errors.question.message}</p>
-              : null
-          }
           <div className='submit'>
             <input type="submit" value='Submit Poll' />
           </div>
@@ -54,27 +48,21 @@ const PollForm = (props) => {
           <div>
           <label>Option 1</label><br/>
           <input
+          name='optionOne'
           type="text"
           value={optionOne}
           onChange={(e)=>setOptionOne(e.target.value)}
           />
-          { errors.optionOne ?
-            <p>{errors.optionOne.message}</p>
-              : null
-          }
           </div>
 
           <div>
           <label>Option 2</label><br/>
           <input
+          name='optionTwo'
           type="text"
           value={optionTwo}
           onChange={(e)=>setOptionTwo(e.target.value)}
           />
-          { errors.optionTwo ?
-            <p>{errors.optionTwo.message}</p>
-              : null
-          }
           </div>
 
           <div>
