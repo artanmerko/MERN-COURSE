@@ -27,10 +27,10 @@ const PollForm = (props) => {
       <form onSubmit={onSubmitHandler}>
 
         <div className='left'>
+           { errors && <span style={{color:'red', fontWeights:'bold'}}>{errors}</span>}
           <p>Your question:</p>
-          {/* {errors === 'unique' ? <span style={{color:'red'}}>*QUESTION IS NOT UNIQUE</span>: null}<br/> */}
-          { errors.question && <p>{errors.question.message}</p>
-          }
+          {errors === 'unique' ? <span style={{color:'red'}}>*QUESTION IS NOT UNIQUE</span>: null}<br/>
+
           <textarea
           name='question'
           cols="20" rows="5"
@@ -48,7 +48,7 @@ const PollForm = (props) => {
           <div>
           <label>Option 1</label><br/>
           <input
-          name='optionOne'
+          name='Option 1'
           type="text"
           value={optionOne}
           onChange={(e)=>setOptionOne(e.target.value)}
@@ -58,7 +58,7 @@ const PollForm = (props) => {
           <div>
           <label>Option 2</label><br/>
           <input
-          name='optionTwo'
+          name='Option 2'
           type="text"
           value={optionTwo}
           onChange={(e)=>setOptionTwo(e.target.value)}

@@ -17,12 +17,11 @@ const CreatePoll = () => {
         console.log(res);
         navigate(`/`);
       })
-      .catch(err => {
+      .catch(err=>{
         console.log(err.response.data.error.message);
         setErrors(err.response.data.error.message);
     })
-  }
-
+}
   return (
     <div>
       <div className='link-home'>
