@@ -6,23 +6,23 @@ module.exports.index = (request, response) => {
 }
     // The method below is new
 module.exports.createProduct = (request, response) => {
-    const { title,price, desc } = request.body;
+    const { title,price, desc } = request.body;
     Product.create({
-        title,
+        title,
         price,
         desc
-    })
-        .then(product => response.json(product))
-        .catch(err => response.json(err));
+    })
+        .then(product =>response.json(product))
+        .catch(err =>response.json(err));
 }
 module.exports.getAllProduct = (request, response) => {
     Product.find({})
-        .then(product => response.json(product))
-        .catch(err => response.json(err))
+        .then(product => response.json(product))
+        .catch(err => response.json(err))
 }
 module.exports.getProduct = (request, response) => {
     Product.findOne({_id:request.params.id})
-        .then(product => response.json(product))
+        .then(product => response.json(product))
         .catch(err => response.json(err))
 }
 module.exports.updateProduct = (request, response) => {
